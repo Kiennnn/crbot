@@ -1,0 +1,8 @@
+analyzers:
+  crbot:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: CRBot
+    # find_and_remove_prefix: 'crbot_base: '
+    # expected: ['crbot_base: power_status','crbot_base: system_status','crbot_base: safety_status','crbot_base: software_status']
+    contains: 'a'
+    timeout: 5.0
