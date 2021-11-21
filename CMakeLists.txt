@@ -11,7 +11,6 @@ find_package(catkin REQUIRED COMPONENTS
     roscpp
     diagnostic_msgs
     message_generation
-# diagnostic_updater
 )
 
 ## System dependencies are found with CMake's conventions

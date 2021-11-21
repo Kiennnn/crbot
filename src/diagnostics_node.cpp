@@ -12,9 +12,9 @@ class diagnostic_object
     diagnostic_msgs::DiagnosticArray diag_msg;
 
   public:
-    diagnostic_object(ros::NodeHandle& nh)
+    diagnostic_object(ros::NodeHandle& nh, std::string topic_name)
     {
-        this->sub = nh.subscribe("raw_data", 1000, &diagnostic_object::readData, this);
+        this->sub = nh.subscribe(topic_name, 1000, &diagnostic_object::readData, this);
         this->pub = nh.advertise<diagnostic_msgs::DiagnosticArray>("diagnostics", 1);
     }
     void readData(const crbot_diagnostics::RawData::ConstPtr& msg)
@@ -56,7 +56,8 @@ int main(int argc, char** argv)
     ros::NodeHandle nh;
 
     // create an object to diagnose battery info
-    diagnostic_object battery_diagnostic(nh);
+    diagnostic_object battery_diagnostic(nh, "raw_data");
+
     ros::spin();
 
     return 0;
