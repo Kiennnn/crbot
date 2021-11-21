@@ -14,6 +14,7 @@ int main(int argc, char** argv)
 
     crbot_diagnostics::RawData msg;
     msg.name = "battery";
+    msg.numberOfKeys = 2;
 
     std::string msg_key_1;
     std::string msg_value_1;

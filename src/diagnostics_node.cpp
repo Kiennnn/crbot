@@ -26,17 +26,17 @@ class diagnostic_object
         diagnostic_msgs::DiagnosticStatus msg_status;
         msg_status.name = msg->name;
 
-        // read keys and values
-        diagnostic_msgs::KeyValue msg_key_value_1;
-        msg_key_value_1.key = msg->key[0];
-        msg_key_value_1.value = msg->value[0];
-        diagnostic_msgs::KeyValue msg_key_value_2;
-        msg_key_value_2.key = msg->key[1];
-        msg_key_value_2.value = msg->value[1];
+        // number of msg's keys
+        int numberOfKeys = msg->numberOfKeys;
 
-        // add components for status.values array
-        msg_status.values.push_back(msg_key_value_1);
-        msg_status.values.push_back(msg_key_value_2);
+        // read keys and values
+        diagnostic_msgs::KeyValue msg_key_value;
+
+        for (int i = 0; i < numberOfKeys; i++) {
+            msg_key_value.key = msg->key[i];
+            msg_key_value.value = msg->value[i];
+            msg_status.values.push_back(msg_key_value);  // add components for status.values array
+        }
 
         // add components for status array
         diag_msg.status.push_back(msg_status);
