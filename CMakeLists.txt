@@ -208,4 +208,8 @@ ${catkin_INCLUDE_DIRS}
 # catkin_add_nosetests(test)
 
 add_executable(diagnostics_node src/diagnostics_node.cpp) 
-target_link_libraries(diagnostics_node ${catkin_LIBRARIES}) 
+target_link_libraries(diagnostics_node ${catkin_LIBRARIES})
+
+add_executable(fake_data src/fake_data.cpp)
+target_link_libraries(fake_data ${catkin_LIBRARIES})
+add_dependencies(fake_data crbot_diagnostics_generate_messages_cpp)
