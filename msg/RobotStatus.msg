@@ -1,0 +1,7 @@
+float64 battery_voltage
+float64 battery_current
+float64 battery_percentage
+float64 left_driver_current
+float64 left_driver_voltage
+float64 right_driver_current
+float64 right_driver_voltage

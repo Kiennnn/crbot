@@ -1,0 +1,4 @@
+float64 left_current
+float64 left_voltage
+float64 right_current
+float64 right_voltage

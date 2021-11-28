@@ -9,6 +9,7 @@ project(crbot_diagnostics)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
     roscpp
+    diagnostic_updater
     diagnostic_msgs
     message_generation
 )
@@ -50,6 +51,9 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   RawData.msg
+  BatteryState.msg
+  DriverState.msg
+  RobotStatus.msg
 #   Message2.msg
 )
 
@@ -208,7 +212,16 @@ ${catkin_INCLUDE_DIRS}
 
 add_executable(diagnostics_node src/diagnostics_node.cpp) 
 target_link_libraries(diagnostics_node ${catkin_LIBRARIES})
+add_dependencies(diagnostics_node crbot_diagnostics_generate_messages_cpp)
 
 add_executable(fake_data src/fake_data.cpp)
 target_link_libraries(fake_data ${catkin_LIBRARIES})
 add_dependencies(fake_data crbot_diagnostics_generate_messages_cpp)
+
+add_executable(hardware_state src/hardware_state.cpp)
+target_link_libraries(hardware_state ${catkin_LIBRARIES})
+add_dependencies(hardware_state crbot_diagnostics_generate_messages_cpp)
+
+add_executable(robot_status src/robot_status.cpp)
+target_link_libraries(robot_status ${catkin_LIBRARIES})
+add_dependencies(robot_status crbot_diagnostics_generate_messages_cpp)
